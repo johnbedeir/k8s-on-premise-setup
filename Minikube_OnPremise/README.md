@@ -7,6 +7,19 @@ Enable Ingress on Minikube
 minikube addons enable ingress
 ```
 
+Enable metallb on Minikube:
+
+```
+minikube addons enable metallb
+minikube addons configure metallb
+```
+
+Enable StorageClass on Minikube:
+
+```
+minikube addons enable default-storageclass
+```
+
 Add minikube app domain locally:
 
 ```
@@ -72,4 +85,34 @@ Apply and save RBAC configuration:
 
 ```
 kubectl create --save-config -f k8s/rbac.yml
+```
+
+### Method 1: ngrok
+
+Create an account on [ngrok](https://dashboard.ngrok.com/signup)
+
+Login
+
+Download ngrok on your machine
+
+Add your auth token by running the command presented to you:
+
+```
+ngrok config add-authtoken TOKEN
+```
+
+Generate a public domain to access your app
+
+```
+ngrok http http://APP_EXTERNAL_IP:APP_PORT
+```
+
+Once run you will find the domain to access your application from ngrok dashboard/Endpoints
+
+#### to keep the command running:
+
+Run ngrok in a container on the host machine or on a vm on the cloud:
+
+```
+docker run -d --net=host -it -e NGROK_AUTHTOKEN=TOKEN ngrok/ngrok:latest http http://APP_EXTERNAL_IP:APP_PORT
 ```
