@@ -31,24 +31,16 @@ minikube addons enable default-storageclass
 ## Add Minikube App Domain Locally
 
 ```sh
-sudo echo "$(minikube ip) app.johnydev.com" | sudo tee -a /etc/hosts
+sudo echo "$(minikube ip) YOUR_DOMAIN" | sudo tee -a /etc/hosts
 ```
 
-## Install MetalLB on Minikube
-
-Set the driver for Minikube:
+## Set the driver for Minikube
 
 ```sh
 minikube config set driver virtualbox
 ```
 
-Deploy MetalLB on Minikube:
-
-```sh
-kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.13.10/config/manifests/metallb-native.yaml
-```
-
-Set the MetalLB configuration:
+## Set the MetalLB configuration:
 
 ```yaml
 apiVersion: v1
@@ -90,6 +82,16 @@ Apply and save RBAC configuration:
 ```sh
 kubectl create --save-config -f k8s/rbac.yml
 ```
+
+## Access your Application:
+
+Access your application using the External IP that will be created for your service, retrieve the IP address using the following command:
+
+```
+kubectl get service go-app -n go-survey
+```
+
+`where go-app is the service name of your application and go-survey is the namespace where your application is deployed`
 
 ## Expose Application Publicly
 
