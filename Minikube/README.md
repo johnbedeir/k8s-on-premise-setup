@@ -1,6 +1,8 @@
 # On-Premise Setup on Minikube using Ingress and MetalLB
 
-This guide provides instructions to set up a Minikube cluster with Ingress, MetalLB, and StorageClass, and exposes the application via ngrok or router port forwarding.
+<img src=minikube-cover.png>
+
+This guide provides instructions to set up on premise solution using Minikube cluster with Ingress, MetalLB, and StorageClass, and exposes the application via ngrok or router port forwarding.
 
 ## Prerequisites
 
