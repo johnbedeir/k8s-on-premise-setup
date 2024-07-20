@@ -1,4 +1,4 @@
-# On-Premise Setup on Minikube using Ingress and MetalLB
+# On-Premise Setup on Minikube using MetalLB
 
 <img src=minikube-cover.png>
 
